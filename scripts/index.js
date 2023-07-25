@@ -29,7 +29,7 @@ const getTitleFromUser = () => (checkInput()) ?
 	renderError("Неправильно заполненное поле");
 
 const renderSearchResult = (moviesList) => {
-	movieListOutputNode.innerText = JSON.stringify(moviesList);
+	console.log(moviesList);
 }
 
 const searchMovieByTitle = () => {
@@ -39,7 +39,7 @@ const searchMovieByTitle = () => {
 	}
 	fetch(`https://omdbapi.com/?s=${movieTitle}&apikey=${API_KEY}`)
 		.then(response => response.json())
-		.then(movie => (movie.Response) ? 
+		.then(movie => (movie.Response === "True") ? 
 			renderSearchResult(movie) :
 			movieListOutputNode.innerText = 'Таких фильмов у нас нет') 
 		.catch(error => alert(error.message))
