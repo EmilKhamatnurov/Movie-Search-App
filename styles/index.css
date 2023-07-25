@@ -22,13 +22,15 @@ html {
 	margin-bottom: 15px;
 }
 
+
+
 /* _____ INPUTS _____ */
 
 .movie-input-group {
 	display: flex;
 	flex-direction: row;
 	margin: 0 auto;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	justify-content: center;
 	max-width: 350px;
 	width: 100%;
@@ -90,6 +92,44 @@ html {
 
 
 /* _____ INPUTS _____ */
+
+/* Стилоизация элемента вывода ошибок */
+.error-output {
+	color: red;
+	font-size: 20px;
+	height: 25px;
+	opacity: 0;
+	margin-bottom: 15px;
+}
+
+.visible {
+	opacity: 1;
+}
+
+.error-output.visible {
+	animation: hide 4s ease forwards;
+}
+
+@keyframes hide {
+	0% {
+		opacity: 0;
+	}
+
+	10% {
+		opacity: 1;
+	}
+
+	90% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+/* Стилоизация элемента вывода ошибок */
+
 .movie-list-output {
 	color: white;
 	display: flex;
