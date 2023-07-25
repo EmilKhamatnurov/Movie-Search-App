@@ -1,3 +1,8 @@
+<!-- 
+	1. Стили для кнопок прописать отдельно
+	2. 
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +18,16 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div class="output" id="output"></div>
+	<div class="container">
+		<h1 class="application-title">Movie Search</h1>
+		<div id="MovieInputsBlock" class="movie-input-group">
+			<input id="movieInputField" class="movie-input-field" placeholder="Enter movie name here" type="text">
+			<button id="movieSearchButton" class="movie-search-button"><span>Search</span></button>
+		</div>
+		<div id="movieListOutput" class="movie-list-output">
+
+		</div>
+	</div>
 	<script src="scripts/index.js"></script>
 </body>
 </html>
