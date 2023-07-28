@@ -28,9 +28,25 @@ const getTitleFromUser = () => (checkInput()) ?
 	movieInputFieldNode.value :
 	renderError("Неправильно заполненное поле");
 
-const renderSearchResult = (moviesList) => {
-	console.log(moviesList);
-}
+
+const renderSearchResult = (searchResponse) => {
+	console.log(searchResponse);
+	let searchResultMarkup = '';
+	searchResponse.Search.forEach(movie => {
+		searchResultMarkup += `
+			<a id='${movie["imdbID"]}' href="movieInfo.html" class="item">
+				<img class='item-image' src='${movie["Poster"]}' alt='Обложка фильма ${movie["Title"]}'>
+				<div class='item-info'>
+					<h2 class='item-name'>${movie["Title"]}</h2>
+					<p class='item-release-date'>${movie["Year"]}</p>
+					<p class='item-type'>${movie["Type"]}</p>
+				</div>
+			</a>
+		`;
+	});
+	
+	movieListOutputNode.innerHTML = searchResultMarkup;
+}		
 
 const searchMovieByTitle = () => {
 	const movieTitle = getTitleFromUser();
@@ -52,3 +68,12 @@ const searchMovieByTitle = () => {
 init();
 // 
 movieSearchButtonNode.addEventListener('click', searchMovieByTitle);
+movieListOutputNode.addEventListener('click', function(e) {
+		console.log(e.target.tagName);
+});
+
+// const params = new URLSearchParams();
+// params.append('param1', 'value1');
+// params.append('param2', 'value2');
+
+// const url = 'https://example.com/api?' + params;
