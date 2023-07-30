@@ -82,7 +82,8 @@ const showMovieInformation = (movieID) => {
 			for (const key in movie_info) {
 				getParams.append(key,movie_info[key]);
 			}
-			window.location.href = 'movieInfo.html/' + getParams;
+			console.log(getParams);
+			window.location.href = `movieInfo.html/?${getParams.toString()}`;
 		})
 }
 
