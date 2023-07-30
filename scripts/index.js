@@ -30,7 +30,6 @@ const getTitleFromUser = () => (checkInput()) ?
 
 
 const renderSearchResult = (searchResponse) => {
-	console.log(searchResponse);
 	let searchResultMarkup = '';
 	searchResponse.Search.forEach(movie => {
 		searchResultMarkup += `
@@ -61,6 +60,31 @@ const searchMovieByTitle = () => {
 		.catch(error => alert(error.message))
 };
 
+const formMovieData = (movie_data) => {
+	return {
+		"Year": movie_data.Year,
+		"Rated": movie_data.Rated,
+		"Released": movie_data.Released,
+		"Runtime": movie_data.Runtime,
+		"Genre": movie_data.Genre,
+		"Director": movie_data.Director,
+		"Actors": movie_data.Actors,
+	}
+}
+
+const showMovieInformation = (movieID) => {
+	fetch(`https://omdbapi.com/?i=${movieID}&apikey=${API_KEY}`)
+		.then(response => response.json())
+		.then(movie_data => {
+			const movie_info = formMovieData(movie_data);
+			console.log(movie_info);
+			let getParams = new URLSearchParams();
+			for (const key in movie_info) {
+				getParams.append(key,movie_info[key]);
+			}
+			window.location.href = 'movieInfo.html/' + getParams;
+		})
+}
 
 
 
@@ -69,7 +93,11 @@ init();
 // 
 movieSearchButtonNode.addEventListener('click', searchMovieByTitle);
 movieListOutputNode.addEventListener('click', function(e) {
-		console.log(e.target.tagName);
+	e.preventDefault();
+	if (e.target.closest('.item').id) {
+		movieID = e.target.closest('.item').id
+		showMovieInformation(movieID);
+	}
 });
 
 // const params = new URLSearchParams();
