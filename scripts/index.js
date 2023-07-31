@@ -69,6 +69,8 @@ const formMovieData = (movie_data) => {
 		"Genre": movie_data.Genre,
 		"Director": movie_data.Director,
 		"Actors": movie_data.Actors,
+		// Image
+		// Rating
 	}
 }
 
