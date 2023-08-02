@@ -18,6 +18,11 @@ const informationPageElements = {
 const renderMainImage = (image) => 
 	movieMainImage.style.background = `url(${image}) center center / contain no-repeat`;
 
+const renderInformation = (Params) => {
+	for (const key in informationPageElements) {
+		informationPageElements[key].innerText = key + ": "+ Params[key];
+	}
+}
 const takeGETParams = () => {
 	// Получаем текущий URL
 	const url = new URL(window.location.href);
@@ -36,6 +41,8 @@ const takeGETParams = () => {
 const renderMovieInformation = () => {
 	GETParams = takeGETParams();
 	renderMainImage(GETParams.Poster);
+	console.log(GETParams);
+	renderInformation(GETParams);
 }
 
 
