@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="/styles/reset.css" type="text/css">
+	<link rel="stylesheet" href="/styles/infoPageStyles.css">
     <title>Movie Info</title>
     <!-- Подключаю шрифты -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,21 +12,34 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="main-image-wrapper">
-        <div class="container">
-            <h2 class="movie-name">a</h2>
-            <div class="rating">a</div>
+	<!-- Верхняя часть с картинкой -->
+    <div id="mainImageWrapper" class="main-image-wrapper">
+        <div class="container movie-info-container">
+            <h1 id="movieName" class="movie-name">a</h1>
+			<div>
+				<div id="movieRating" class="information-text imdbRating">a</div>
+				<div id="movieStars" class="information-text Stars"></div> <!-- Тут должен отображаться рейтинг фильма в виде звезд -->
+			</div>
             <div>
-                <div class="rates">a</div>
-                <div class="Genre">a</div>
-                <div class="runtime">a</div>
+				<div id="movieGenre" class="information-text Genre">a</div>
+                <div id="movieRuntime" class="information-text Runtime">a</div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="movie-director">a</div>
-        <div class="movie-actors">a</div>
-        <div class="movie-description">a</div>
+	<!-- Часть с описанием -->
+    <div class="container movie-info-container">
+		<div class="basic-movie-info">
+			<h2 class="title information-title">Общая информация</h2>
+			<p id="movieRated" class="information-text movie-rated">a</p>
+			<p id="movieReleased" class="information-text movie-released">a</p>
+			<p id="movieDirector" class="information-text movie-director">a</p>
+			<p id="movieActors" class="information-text movie-actors">a</p>
+		</div>
+		<div class="movie-description-wrapper">
+			<h2 class="title description-title">Описание фильма</h2>
+			<p id="movieDescription" class="information-text movie-description"></p>
+		</div>
     </div>
+	<script src="/scripts/infoPageScript.js" type="application/javascript"></script>
 </body>
 </html>

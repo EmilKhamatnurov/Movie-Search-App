@@ -62,6 +62,7 @@ const searchMovieByTitle = () => {
 
 const formMovieData = (movie_data) => {
 	return {
+		"Title": movie_data.Ttile,
 		"Year": movie_data.Year,
 		"Rated": movie_data.Rated,
 		"Released": movie_data.Released,
@@ -69,7 +70,8 @@ const formMovieData = (movie_data) => {
 		"Genre": movie_data.Genre,
 		"Director": movie_data.Director,
 		"Actors": movie_data.Actors,
-		// Image
+		"Poster": movie_data.Poster,
+		"imdbRating": movie_data.imdbRating,
 		// Rating
 	}
 }
@@ -78,13 +80,14 @@ const showMovieInformation = (movieID) => {
 	fetch(`https://omdbapi.com/?i=${movieID}&apikey=${API_KEY}`)
 		.then(response => response.json())
 		.then(movie_data => {
+			// console.log(movie_data);
 			const movie_info = formMovieData(movie_data);
 			console.log(movie_info);
 			let getParams = new URLSearchParams();
 			for (const key in movie_info) {
 				getParams.append(key,movie_info[key]);
 			}
-			console.log(getParams);
+			// console.log(getParams);
 			window.location.href = `movieInfo.html/?${getParams.toString()}`;
 		})
 }
