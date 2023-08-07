@@ -15,15 +15,19 @@ const init = () => movieListOutputNode.innerText = "Поиск пока пуст
 
 const checkInput = () => (!movieInputFieldNode.value.trim()) ? false : true;
 
+const changeLocation = (getParams) => window.location.href = `movieInfo.html?${getParams.toString()}`;
+
+const clearMovieInput = () => movieInputFieldNode.value = '';
+
+const switchFocusToMovieInput = () => movieInputFieldNode.focus();
+
+
 const renderError = (message_error) => {
 	errorOutputNode.innerText =  `${message_error}`;
 	errorOutputNode.classList.toggle('visible');
 	clearMovieInput();
 	switchFocusToMovieInput();
 } 
-const clearMovieInput = () => movieInputFieldNode.value = '';
-const switchFocusToMovieInput = () => movieInputFieldNode.focus();
-
 const getTitleFromUser = () => (checkInput()) ? 
 	movieInputFieldNode.value :
 	renderError("Неправильно заполненное поле");
@@ -81,12 +85,11 @@ const showMovieInformation = (movieID) => {
 		.then(movie_data => {
 			// console.log(movie_data);
 			const movie_info = formMovieData(movie_data);
-			console.log(movie_info);
 			const getParams = new URLSearchParams();
 			for (const key in movie_info) {
 				getParams.append(key,movie_info[key]);
 			}
-			window.location.href = `movieInfo.html?${getParams.toString()}`;
+			changeLocation(getParams);
 		})
 }
 
