@@ -15,7 +15,7 @@ const init = () => movieListOutputNode.innerText = "Поиск пока пуст
 
 const checkInput = () => (!movieInputFieldNode.value.trim()) ? false : true;
 
-const changeLocation = (getParams) => window.location.href = `movieInfo.html?${getParams.toString()}`;
+const changeLocation = (movieID) => window.location.href = `movieInfo.html?id=${movieID}`;
 
 const clearMovieInput = () => movieInputFieldNode.value = '';
 
@@ -64,36 +64,6 @@ const searchMovieByTitle = () => {
 		.catch(error => alert(error.message))
 };
 
-const formMovieData = (movie_data) => {
-	return {
-		"Title": movie_data.Title,
-		"Year": movie_data.Year,
-		"Rated": movie_data.Rated,
-		"Released": movie_data.Released,
-		"Runtime": movie_data.Runtime,
-		"Genre": movie_data.Genre,
-		"Director": movie_data.Director,
-		"Actors": movie_data.Actors,
-		"Poster": movie_data.Poster,
-		"imdbRating": movie_data.imdbRating,
-	}
-}
-
-
-const showMovieInformation = (movieID) => {
-	fetch(`https://omdbapi.com/?i=${movieID}&apikey=${API_KEY}`)
-		.then(response => response.json())
-		.then(movie_data => {
-			// console.log(movie_data);
-			const movie_info = formMovieData(movie_data);
-			const getParams = new URLSearchParams();
-			for (const key in movie_info) {
-				getParams.append(key,movie_info[key]);
-			}
-			changeLocation(getParams);
-		})
-}
-
 // _____ ОТРАБОТЧИКИ КНОПОК _____
 init();
 // 
@@ -102,6 +72,6 @@ movieListOutputNode.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (e.target.closest('.item').id) {
 		movieID = e.target.closest('.item').id
-		showMovieInformation(movieID);
+		changeLocation(movieID);
 	}
 });
