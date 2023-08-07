@@ -86,7 +86,7 @@ const showMovieInformation = (movieID) => {
 			for (const key in movie_info) {
 				getParams.append(key,movie_info[key]);
 			}
-			window.location.replace(`/movieInfo.html/?${getParams.toString()}`);
+			window.location.href = `movieInfo.html?${getParams.toString()}`;
 		})
 }
 
@@ -103,9 +103,3 @@ movieListOutputNode.addEventListener('click', function(e) {
 		showMovieInformation(movieID);
 	}
 });
-
-// const params = new URLSearchParams();
-// params.append('param1', 'value1');
-// params.append('param2', 'value2');
-
-// const url = 'https://example.com/api?' + params;
