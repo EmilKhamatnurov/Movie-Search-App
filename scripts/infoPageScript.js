@@ -1,6 +1,6 @@
 // ССЫЛКИ НА ЭЛЕМЕНТЫ
 //Ссылка на главную фоновую картинку
-const movieMainImage = document.querySelector('#mainImageWrapper');
+const movieImage = document.querySelector('#movieImage');
 
 // Ссылка на элементы с данными о фильмах
 const informationPageElements = {
@@ -11,12 +11,12 @@ const informationPageElements = {
 	'Genre': document.querySelector('#movieGenre'),
 	'Director': document.querySelector('#movieDirector'),
 	'Actors': document.querySelector('#movieActors'),
-	'imdbRating': document.querySelector('#movieName'),
+	'imdbRating': document.querySelector('#imdbRating'),
 }
 
 // ФУНКЦИИ
 const renderMainImage = (image) => 
-	movieMainImage.style.background = `url(${image}) center center / contain no-repeat`;
+	movieImage.src = image;
 
 const renderInformation = (Params) => {
 	for (const key in informationPageElements) {
@@ -44,7 +44,6 @@ const renderMovieInformation = () => {
 	console.log(GETParams);
 	renderInformation(GETParams);
 }
-
 
 // ОТРАБОТЧИКИ
 window.addEventListener('load', renderMovieInformation);

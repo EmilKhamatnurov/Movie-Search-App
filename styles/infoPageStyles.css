@@ -6,16 +6,30 @@ html {
 	color: white;
 }
 
-.main-image-wrapper {
+.return-button {
+	width: 100%;
+
+}
+
+.movie-image {
 	min-height: 450px;
+	width: auto;
+	display: block;
+}
+
+.returnButtonWrapper {
+	margin: 0 auto;
 }
 
 .container {
+	max-width: 1000px;
 	margin: 0 auto;
 	display: flex;
-	justify-content: end;
+	justify-content: center;
 	align-items: center;
-	flex-direction: column;
+	gap: 25px;
+	flex-wrap: wrap;
+	/* flex-direction: column; */
 }
 
 .movie-info-container {}

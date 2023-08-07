@@ -79,6 +79,7 @@ const formMovieData = (movie_data) => {
 	}
 }
 
+
 const showMovieInformation = (movieID) => {
 	fetch(`https://omdbapi.com/?i=${movieID}&apikey=${API_KEY}`)
 		.then(response => response.json())
@@ -92,8 +93,6 @@ const showMovieInformation = (movieID) => {
 			changeLocation(getParams);
 		})
 }
-
-
 
 // _____ ОТРАБОТЧИКИ КНОПОК _____
 init();

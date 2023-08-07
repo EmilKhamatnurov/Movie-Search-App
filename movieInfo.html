@@ -13,34 +13,33 @@
 </head>
 <body>
 	<!-- Верхняя часть с картинкой -->
-    <div id="mainImageWrapper" class="main-image-wrapper">
-        <div class="container">
-            <h1 id="movieName" class="movie-name">a</h1>
-			<div>
-				<div id="movieRating" class="information-text imdbRating">a</div>
-				<!-- <div id="movieStars" class="information-text Stars"></div> -->
-				<!-- Тут должен отображаться рейтинг фильма в виде звезд -->
+	<div class="container">
+		<a id="returnButton" href="#" class="return-button">Go back to main page</a>
+	</div>
+	<div class="container">
+		<img id="movieImage" class="movie-image" src="">
+
+		
+		<div class="movie-info-container">
+			<h1 id="movieName" class="movie-name"></h1>
+			<div id="imdbRating" class="information-text imdbRating"></div>
+			<div id="movieGenre" class="information-text Genre"></div>
+			<div id="movieRuntime" class="information-text Runtime"></div>
+			<div class="basic-movie-info">
+				<h2 class="title information-title">Общая информация</h2>
+				<p id="movieRated" class="information-text movie-rated"></p>
+				<p id="movieReleased" class="information-text movie-released"></p>
+				<p id="movieDirector" class="information-text movie-director"></p>
+				<p id="movieActors" class="information-text movie-actors"></p>
 			</div>
-            <div>
-				<div id="movieGenre" class="information-text Genre">a</div>
-                <div id="movieRuntime" class="information-text Runtime">a</div>
-            </div>
-        </div>
-    </div>
-	<!-- Часть с описанием -->
-    <div class="movie-info-container">
-		<div class="basic-movie-info">
-			<h2 class="title information-title">Общая информация</h2>
-			<p id="movieRated" class="information-text movie-rated">a</p>
-			<p id="movieReleased" class="information-text movie-released">a</p>
-			<p id="movieDirector" class="information-text movie-director">a</p>
-			<p id="movieActors" class="information-text movie-actors">a</p>
+			<div class="movie-description-wrapper">
+				<h2 class="title description-title">Описание фильма</h2>
+				<p id="movieDescription" class="information-text movie-description"></p>
+			</div>
 		</div>
-		<div class="movie-description-wrapper">
-			<h2 class="title description-title">Описание фильма</h2>
-			<p id="movieDescription" class="information-text movie-description"></p>
-		</div>
-    </div>
+		
+	</div>
+    
 	<script src="scripts/infoPageScript.js" type="application/javascript"></script>
 </body>
 </html>
