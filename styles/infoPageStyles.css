@@ -71,6 +71,11 @@ html {
 	margin-bottom: 5px;
 }
 
+.field-label {
+	letter-spacing: normal;
+	font-weight: 400;
+}
+
 .imdbRating {}
 
 .Stars {}

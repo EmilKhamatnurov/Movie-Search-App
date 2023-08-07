@@ -20,7 +20,8 @@ const renderMainImage = (image) =>
 
 const renderInformation = (Params) => {
 	for (const key in informationPageElements) {
-		informationPageElements[key].innerText = key + ": "+ Params[key];
+		informationPageElements[key].innerHTML = 
+			`<span class='field-label'>${key}:</span> ${Params[key]}`;
 	}
 }
 const takeGETParams = () => {
