@@ -4,39 +4,71 @@ html {
 	width: 100%;
 	height: 100%;
 	color: white;
+	padding: 0 25px;
 }
 
 .return-button {
-	width: 100%;
-
+	/* width: 100%; */
+	padding: 17px 40px;
+	border-radius: 50px;
+	border: 0;
+	background-color: white;
+	box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	font-size: 15px;
+	transition: all .5s ease;
+	text-decoration: none;
+	color: #212121;
 }
 
+.return-button:hover {
+	letter-spacing: 3px;
+	background-color: hsl(261deg 80% 48%);
+	color: hsl(0, 0%, 100%);
+	box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}
+
+.return-button:active {
+	letter-spacing: 3px;
+	background-color: hsl(261deg 80% 48%);
+	color: hsl(0, 0%, 100%);
+	box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+	transform: translateY(10px);
+	transition: 100ms;
+}
+
+
 .movie-image {
-	min-height: 450px;
+	max-height: 400px;
 	width: auto;
 	display: block;
 }
 
-.returnButtonWrapper {
-	margin: 0 auto;
-}
-
 .container {
-	max-width: 1000px;
+	max-width: 780px;
 	margin: 0 auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 25px;
 	flex-wrap: wrap;
-	/* flex-direction: column; */
+	margin-top: 50px;
 }
 
 .movie-info-container {}
 
-.movie-name {}
+.movie-name {
+	font-size: 32px;
+	font-weight: 500;
+	margin-bottom: 30px;
+}
 
-.information-text {}
+.information-text {
+	font-size: 18px;
+	font-weight: 300;
+	letter-spacing: 0.1em;
+}
 
 .imdbRating {}
 
@@ -65,3 +97,70 @@ html {
 .description-title {}
 
 .movie-description {}
+
+/* Стили для карты фильма */
+
+.card {
+	width: 100%;
+	height: 100%;
+	transition: all 0.2s;
+	position: relative;
+	cursor: pointer;
+}
+
+.card-inner {
+	padding: 25px;
+	background: rgba(255, 255, 255, .05);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(10px);
+	border-radius: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.card-inner p {
+	max-width: 350px;
+}
+
+.card:hover {
+	transform: scale(1.04) rotate(1deg);
+	backdrop-filter: inherit;
+	box-shadow: inherit;
+}
+
+.circle {
+	width: 150px;
+	height: 150px;
+	background: radial-gradient(#9833e6, #d75cf3);
+	border-radius: 50%;
+	position: absolute;
+	animation: move-up6 2s ease-in infinite alternate-reverse;
+}
+
+.circle:nth-child(1) {
+	top: -25px;
+	left: -25px;
+}
+
+.circle:nth-child(2) {
+	bottom: -25px;
+	right: -25px;
+	animation-name: move-down1;
+}
+
+@keyframes move-up6 {
+	to {
+		transform: translateY(-10px);
+	}
+}
+
+@keyframes move-down1 {
+	to {
+		transform: translateY(10px);
+	}
+}
+
+/* Стили для карты фильма */
