@@ -65,9 +65,10 @@ html {
 }
 
 .information-text {
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 300;
 	letter-spacing: 0.1em;
+	margin-bottom: 5px;
 }
 
 .imdbRating {}
@@ -92,11 +93,19 @@ html {
 
 .movie-actors {}
 
-.movie-description-wrapper {}
+.movie-description-wrapper {
+	margin-top: 10px;
+}
 
-.description-title {}
+.description-title {
+	font-size: 16px;
+	font-weight: 300;
+}
 
-.movie-description {}
+.movie-description {
+	font-size: 16px;
+	font-weight: 300;
+}
 
 /* Стили для карты фильма */
 
@@ -106,6 +115,7 @@ html {
 	transition: all 0.2s;
 	position: relative;
 	cursor: pointer;
+	z-index: 10;
 }
 
 .card-inner {
@@ -137,6 +147,7 @@ html {
 	background: radial-gradient(#9833e6, #d75cf3);
 	border-radius: 50%;
 	position: absolute;
+	z-index: -1;
 	animation: move-up6 2s ease-in infinite alternate-reverse;
 }
 
