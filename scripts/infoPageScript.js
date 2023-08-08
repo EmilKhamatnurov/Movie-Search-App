@@ -1,6 +1,8 @@
 // КОНСТАНТЫ
 const API_KEY = 'd0fbae7e';
-const movieTitleGlobal = '';
+
+// ПЕРЕМЕННЫЕ 
+let movieTitleGlobal = '';
 // ССЫЛКИ НА ЭЛЕМЕНТЫ
 //Ссылка на главную фоновую картинку
 const movieImage = document.querySelector('#movieImage');
@@ -70,6 +72,7 @@ const showMovieInformation = (movieID) => {
 		.then(response => response.json())
 		.then(movie_data => {
 			const movie_info = formMovieData(movie_data);
+			movieTitleGlobal = movie_info.Title;
 			renderMainImage(movie_info.Poster);
 			renderInformation(movie_info);
 			renderMovieDescription(movie_info.Plot)
@@ -83,10 +86,10 @@ const renderMovieInformation = () => {
 	showMovieInformation(movieID.id);
 }
 
-const goBackToMainPage = (movieTitle) => {
-	
+const backToMainPage = (Event, movieTitle) => {
+	Event.preventDefault();
 	window.location.href = `index.html?movieTitle=${movieTitle}`;
 }
 // ОТРАБОТЧИКИ
 window.addEventListener('load', renderMovieInformation);
-// returnButtonNode.addEventListener('click', )
+returnButtonNode.addEventListener('click', function (event) {backToMainPage(event, movieTitleGlobal)})

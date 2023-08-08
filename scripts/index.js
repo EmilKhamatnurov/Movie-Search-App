@@ -11,7 +11,13 @@ const movieListOutputNode = document.querySelector('#movieListOutput');
 const errorOutputNode = document.querySelector('#errorOutput');
 
 // _____ FUNCTIONS _____
-const init = () => movieListOutputNode.innerText = "Поиск пока пуст";
+const init = () => {
+	const url = new URL(window.location.href);
+	(!url.searchParams.get('movieTitle')) ? 
+		movieListOutputNode.innerText = "Поиск пока пуст" :
+		""
+
+}
 
 const checkInput = () => (!movieInputFieldNode.value.trim()) ? false : true;
 
