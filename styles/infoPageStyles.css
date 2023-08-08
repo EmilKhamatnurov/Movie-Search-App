@@ -105,6 +105,7 @@ html {
 .description-title {
 	font-size: 16px;
 	font-weight: 400;
+	margin-bottom: 15px;
 }
 
 .movie-description {
@@ -169,13 +170,13 @@ html {
 
 @keyframes move-up6 {
 	to {
-		transform: translateY(-10px);
+		transform: translateY(-15px);
 	}
 }
 
 @keyframes move-down1 {
 	to {
-		transform: translateY(10px);
+		transform: translateY(15px);
 	}
 }
 

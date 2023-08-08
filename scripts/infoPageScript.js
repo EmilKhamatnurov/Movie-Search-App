@@ -1,5 +1,6 @@
 // КОНСТАНТЫ
 const API_KEY = 'd0fbae7e';
+const movieTitleGlobal = '';
 // ССЫЛКИ НА ЭЛЕМЕНТЫ
 //Ссылка на главную фоновую картинку
 const movieImage = document.querySelector('#movieImage');
@@ -18,14 +19,17 @@ const informationPageElements = {
 
 const movieDescriptionNode = document.querySelector('#movieDescription');
 
+const returnButtonNode = document.querySelector('#returnButton');
 // ФУНКЦИИ
-const renderMainImage = (image) => 
-	movieImage.src = image;
+const renderMainImage = (image) => (image !== 'N/A') ? 
+	movieImage.src = image : 
+	movieImage.src = 'resources/Movie & Film Poster.jpg';
 
 const renderInformation = (movieInfo) => {
 	for (const key in informationPageElements) {
-		informationPageElements[key].innerHTML = 
-			`<span class='field-label'>${key}:</span> ${movieInfo[key]}`;
+		(movieInfo[key] === 'N/A') ? 
+			informationPageElements[key].style.display = 'none' :
+			informationPageElements[key].innerHTML = `<span class='field-label'>${key}:</span> ${movieInfo[key]}`;
 	}
 }
 const renderMovieDescription = (description) => movieDescriptionNode.innerText = description;
@@ -41,11 +45,11 @@ const getMovieID = () => {
 		movieID[key] = value;
 	}
 	// console.log(movieID);
+	movieIDGlobal = movieID.id;
 	return movieID;
 };
 
 const formMovieData = (movie_data) => {
-	console.log(movie_data);
 	return {
 		"Title": movie_data.Title,
 		"Year": movie_data.Year,
@@ -61,7 +65,6 @@ const formMovieData = (movie_data) => {
 	}
 }
 
-
 const showMovieInformation = (movieID) => {
 	fetch(`https://omdbapi.com/?i=${movieID}&apikey=${API_KEY}`)
 		.then(response => response.json())
@@ -73,15 +76,17 @@ const showMovieInformation = (movieID) => {
 		})
 		.catch(error => console.error(error))
 }
-// 
-
 
 // Функция отображения информации на странице
 const renderMovieInformation = () => {
 	movieID = getMovieID();
-	console.log(movieID);
 	showMovieInformation(movieID.id);
 }
 
+const goBackToMainPage = (movieTitle) => {
+	
+	window.location.href = `index.html?movieTitle=${movieTitle}`;
+}
 // ОТРАБОТЧИКИ
 window.addEventListener('load', renderMovieInformation);
+// returnButtonNode.addEventListener('click', )

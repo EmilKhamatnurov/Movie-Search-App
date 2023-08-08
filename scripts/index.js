@@ -33,12 +33,18 @@ const getTitleFromUser = () => (checkInput()) ?
 	renderError("Неправильно заполненное поле");
 
 
-const renderSearchResult = (searchResponse) => {
+const renderSearchResult = (searchResult) => {
+
 	let searchResultMarkup = '';
-	searchResponse.Search.forEach(movie => {
-		searchResultMarkup += `
+	searchResult.Search.forEach(movie => {
+		let movieImage = movie["Poster"];
+		(movieImage === 'N/A') ? 
+			movieImage = 'resources/Movie & Film Poster.jpg' :
+			movieImage = movie["Poster"]
+
+			searchResultMarkup += `
 			<a id='${movie["imdbID"]}' href="movieInfo.html" class="item">
-				<img class='item-image' src='${movie["Poster"]}' alt='Обложка фильма ${movie["Title"]}'>
+				<img class='item-image' src='${movieImage}' alt='Обложка фильма ${movie["Title"]}'>
 				<div class='item-info'>
 					<h2 class='item-name'>${movie["Title"]}</h2>
 					<p class='item-release-date'>${movie["Year"]}</p>
@@ -61,7 +67,7 @@ const searchMovieByTitle = () => {
 		.then(movie => (movie.Response === "True") ? 
 			renderSearchResult(movie) :
 			movieListOutputNode.innerText = 'Таких фильмов у нас нет') 
-		.catch(error => alert(error.message))
+		.catch(error =>console.log(error))
 };
 
 // _____ ОТРАБОТЧИКИ КНОПОК _____
