@@ -29,6 +29,7 @@ const clearMovieInput = () => movieInputFieldNode.value = '';
 
 const switchFocusToMovieInput = () => movieInputFieldNode.focus();
 
+const pageCounter = (totalResults) => totalResults/10;
 
 const renderError = (message_error) => {
 	errorOutputNode.innerText =  `${message_error}`;
@@ -66,17 +67,21 @@ const renderSearchResult = (searchResult) => {
 	movieListOutputNode.innerHTML = searchResultMarkup;
 }		
 
+const sendRequestForMovies = (movieTitle, page) => {
+	fetch(`https://omdbapi.com/?s=${movieTitle}&apikey=${API_KEY}&page=${page}`)
+	.then(response => response.json())
+	.then(movie => (movie.Response === "True") ? 
+		renderSearchResult(movie) :
+		movieListOutputNode.innerText = 'There are no such films.') 
+	.catch(error =>console.log(error))
+}
+
 const searchMovieByTitle = () => {
 	const movieTitle = getTitleFromUser();
 	if(!movieTitle){
 		return
 	}
-	fetch(`https://omdbapi.com/?s=${movieTitle}&apikey=${API_KEY}`)
-		.then(response => response.json())
-		.then(movie => (movie.Response === "True") ? 
-			renderSearchResult(movie) :
-			movieListOutputNode.innerText = 'There are no such films.') 
-		.catch(error =>console.log(error))
+	sendRequestForMovies(movieTitle, 10);
 };
 
 // _____ ОТРАБОТЧИКИ КНОПОК _____

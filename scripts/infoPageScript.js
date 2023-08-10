@@ -1,7 +1,6 @@
 // КОНСТАНТЫ
 const API_KEY = 'd0fbae7e';
-
-// ПЕРЕМЕННЫЕ 
+ 
 // ССЫЛКИ НА ЭЛЕМЕНТЫ
 //Ссылка на главную фоновую картинку
 const movieImage = document.querySelector('#movieImage');
@@ -66,7 +65,7 @@ const formMovieData = (movie_data) => {
 }
 
 const showMovieInformation = (movieID) => {
-	fetch(`https://omdbapi.com/?i=${movieID}&apikey=${API_KEY}`)
+	fetch(`https://omdbapi.com/?i=${movieID}&apikey=${API_KEY}&plot=full`)
 		.then(response => response.json())
 		.then(movie_data => {
 			const movie_info = formMovieData(movie_data);
