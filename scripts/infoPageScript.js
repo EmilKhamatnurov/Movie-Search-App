@@ -17,11 +17,11 @@ const informationPageElements = {
 	'Director': document.querySelector('#movieDirector'),
 	'Actors': document.querySelector('#movieActors'),
 	'imdbRating': document.querySelector('#imdbRating'),
-	'Plot': document.querySelector('#movieDescription'),
 }
 
-const returnButtonNode = document.querySelector('#returnButton');
+const movieDescriptionNode = document.querySelector('#movieDescription');
 
+const returnButtonNode = document.querySelector('#returnButton');
 // ФУНКЦИИ
 const renderMainImage = (image) => (image !== 'N/A') ? 
 	movieImage.src = image : 
@@ -34,6 +34,7 @@ const renderInformation = (movieInfo) => {
 			informationPageElements[key].innerHTML = `<span class='field-label'>${key}:</span> ${movieInfo[key]}`;
 	}
 }
+const renderMovieDescription = (description) => movieDescriptionNode.innerText = description;
 
 const getMovieID = () => {
 	// Получаем текущий URL
@@ -71,10 +72,10 @@ const showMovieInformation = (movieID) => {
 		.then(response => response.json())
 		.then(movie_data => {
 			const movie_info = formMovieData(movie_data);
-			console.log(movie_info);
 			movieTitleGlobal = movie_info.Title;
 			renderMainImage(movie_info.Poster);
 			renderInformation(movie_info);
+			renderMovieDescription(movie_info.Plot)
 		})
 		.catch(error => console.error(error))
 }
