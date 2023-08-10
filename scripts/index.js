@@ -16,7 +16,6 @@ const init = () => {
 	(!url.searchParams.get('movieTitle')) ? 
 		movieListOutputNode.innerText = "Поиск пока пуст" :
 		""
-
 }
 
 const checkInput = () => (!movieInputFieldNode.value.trim()) ? false : true;
@@ -26,7 +25,6 @@ const changeLocation = (movieID) => window.location.href = `movieInfo.html?id=${
 const clearMovieInput = () => movieInputFieldNode.value = '';
 
 const switchFocusToMovieInput = () => movieInputFieldNode.focus();
-
 
 const renderError = (message_error) => {
 	errorOutputNode.innerText =  `${message_error}`;
@@ -38,7 +36,6 @@ const getTitleFromUser = () => (checkInput()) ?
 	movieInputFieldNode.value :
 	renderError("Неправильно заполненное поле");
 
-
 const renderSearchResult = (searchResult) => {
 
 	let searchResultMarkup = '';
@@ -47,7 +44,7 @@ const renderSearchResult = (searchResult) => {
 		(movieImage === 'N/A') ? 
 			movieImage = 'resources/Movie & Film Poster.jpg' :
 			movieImage = movie["Poster"]
-
+			
 			searchResultMarkup += `
 			<a id='${movie["imdbID"]}' href="movieInfo.html" class="item">
 				<img class='item-image' src='${movieImage}' alt='Обложка фильма ${movie["Title"]}'>
