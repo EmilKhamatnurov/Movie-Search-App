@@ -12,11 +12,13 @@ const errorOutputNode = document.querySelector('#errorOutput');
 
 // _____ FUNCTIONS _____
 const init = () => {
-	const url = new URL(window.location.href);
-	(!url.searchParams.get('movieTitle')) ? 
-		movieListOutputNode.innerText = "Поиск пока пуст" :
-		""
-
+	const movieTitleFromStorage = localStorage.getItem('movieTitleStorage');
+	if(movieTitleFromStorage) {
+		movieInputFieldNode.value = movieTitleFromStorage;
+		searchMovieByTitle();
+		return;
+	};
+	movieInputFieldNode.value = "The list is currently empty";
 }
 
 const checkInput = () => (!movieInputFieldNode.value.trim()) ? false : true;
@@ -34,23 +36,25 @@ const renderError = (message_error) => {
 	clearMovieInput();
 	switchFocusToMovieInput();
 } 
-const getTitleFromUser = () => (checkInput()) ? 
-	movieInputFieldNode.value :
-	renderError("Неправильно заполненное поле");
-
+const getTitleFromUser = () => {
+	if (checkInput()) { 
+	localStorage.setItem('movieTitleStorage',`${movieInputFieldNode.value}`);
+	return movieInputFieldNode.value 
+	}
+	renderError("Incorrectly filled field");
+}
 
 const renderSearchResult = (searchResult) => {
-
+	console.log(searchResult);
 	let searchResultMarkup = '';
 	searchResult.Search.forEach(movie => {
 		let movieImage = movie["Poster"];
 		(movieImage === 'N/A') ? 
 			movieImage = 'resources/Movie & Film Poster.jpg' :
 			movieImage = movie["Poster"]
-
 			searchResultMarkup += `
 			<a id='${movie["imdbID"]}' href="movieInfo.html" class="item">
-				<img class='item-image' src='${movieImage}' alt='Обложка фильма ${movie["Title"]}'>
+				<img class='item-image' src='${movieImage}' alt='${movie["Title"]} movie cover'>
 				<div class='item-info'>
 					<h2 class='item-name'>${movie["Title"]}</h2>
 					<p class='item-release-date'>${movie["Year"]}</p>
@@ -59,7 +63,6 @@ const renderSearchResult = (searchResult) => {
 			</a>
 		`;
 	});
-	
 	movieListOutputNode.innerHTML = searchResultMarkup;
 }		
 
@@ -72,13 +75,14 @@ const searchMovieByTitle = () => {
 		.then(response => response.json())
 		.then(movie => (movie.Response === "True") ? 
 			renderSearchResult(movie) :
-			movieListOutputNode.innerText = 'Таких фильмов у нас нет') 
+			movieListOutputNode.innerText = 'There are no such films.') 
 		.catch(error =>console.log(error))
 };
 
 // _____ ОТРАБОТЧИКИ КНОПОК _____
 init();
 // 
+
 movieSearchButtonNode.addEventListener('click', searchMovieByTitle);
 movieListOutputNode.addEventListener('click', function(e) {
 	e.preventDefault();
