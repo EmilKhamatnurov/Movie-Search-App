@@ -80,6 +80,7 @@ const showMovieInformation = (movieID) => {
 		.catch(error => console.error(error))
 }
 
+
 // Функция отображения информации на странице
 const renderMovieInformation = () => {
 	movieID = getMovieID();
