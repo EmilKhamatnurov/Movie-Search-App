@@ -9,16 +9,18 @@ const movieSearchButtonNode = document.querySelector('#movieSearchButton');
 const movieListOutputNode = document.querySelector('#movieListOutput');
 // ?
 const errorOutputNode = document.querySelector('#errorOutput');
+// 
+const movieTitleFromStorage = localStorage.getItem('movieTitleStorage');
 
 // _____ FUNCTIONS _____
 const init = () => {
-	const movieTitleFromStorage = localStorage.getItem('movieTitleStorage');
 	if(movieTitleFromStorage) {
+		console.log(movieTitleFromStorage);
 		movieInputFieldNode.value = movieTitleFromStorage;
 		searchMovieByTitle();
 		return;
 	};
-	movieInputFieldNode.value = "The list is currently empty";
+	movieListOutputNode.innerText = "The list is currently empty";
 }
 
 const checkInput = () => (!movieInputFieldNode.value.trim()) ? false : true;
@@ -81,7 +83,7 @@ const searchMovieByTitle = () => {
 	if(!movieTitle){
 		return
 	}
-	sendRequestForMovies(movieTitle, 10);
+	sendRequestForMovies(movieTitle, 1);
 };
 
 // _____ ОТРАБОТЧИКИ КНОПОК _____

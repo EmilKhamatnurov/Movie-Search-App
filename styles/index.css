@@ -6,7 +6,7 @@ html {
 }
 
 .container {
-	max-width: 80%;
+	max-width: 90%;
 	margin: 0 auto;
 	padding: 40px 5px;
 	display: flex;
@@ -87,7 +87,65 @@ html {
 	transition: 0.3s;
 }
 
+/* Стили для кнопки переключения страниц */
 
+
+.page-control {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+	max-width: 350px;
+}
+
+.page-control-title {
+	color: white;
+	font-size: 24px;
+	margin-right: 15px;
+}
+
+.page-minus::before,
+.page-plus::after {
+	content: attr(data-content);
+	background-color: #333333;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border: none;
+	color: white;
+	transition: background-color 0.3s;
+	cursor: pointer;
+}
+
+.page-minus::before {
+	content: "-";
+}
+
+.page-plus::after {
+	content: "+";
+}
+
+.page-quantity-wrapper {
+	width: 30%;
+}
+
+.page-quantity {
+	padding: 0.25rem;
+	border: 0;
+	width: 100%;
+	-moz-appearance: textfield;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+.page-minus:hover::before,
+.page-plus:hover::after {
+	background-color: #666666;
+}
+
+/* Стили для кнопки переключения страниц */
 
 /* _____ INPUTS _____ */
 
@@ -185,6 +243,7 @@ html {
 
 .item-image {
 	max-width: 150px;
+	max-height: 215px;
 }
 
 .item-info {

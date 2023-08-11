@@ -56,8 +56,6 @@ html {
 	margin-top: 50px;
 }
 
-.movie-info-container {}
-
 .movie-name {
 	font-size: 32px;
 	font-weight: 500;
@@ -76,28 +74,6 @@ html {
 	font-weight: 400;
 }
 
-.imdbRating {}
-
-.Stars {}
-
-.Genre {}
-
-.Runtime {}
-
-.basic-movie-info {}
-
-.title {}
-
-.information-title {}
-
-.movie-rated {}
-
-.movie-released {}
-
-.movie-director {}
-
-.movie-actors {}
-
 .movie-description-wrapper {
 	margin-top: 10px;
 }
@@ -105,7 +81,9 @@ html {
 .description-title {
 	font-size: 16px;
 	font-weight: 400;
-	margin-bottom: 15px;
+	margin-bottom: 5px;
+	margin-top: 15px;
+	text-decoration: underline;
 }
 
 .movie-description {
@@ -141,11 +119,11 @@ html {
 	max-width: 350px;
 }
 
-.card:hover {
+/* .card:hover {
 	transform: scale(1.04) rotate(1deg);
 	backdrop-filter: inherit;
 	box-shadow: inherit;
-}
+} */
 
 .circle {
 	width: 150px;
