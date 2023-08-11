@@ -94,7 +94,7 @@ html {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	max-width: 350px;
 }
 
@@ -111,8 +111,8 @@ html {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 24px;
-	height: 24px;
+	width: 28px;
+	height: 28px;
 	border: none;
 	color: white;
 	transition: background-color 0.3s;
@@ -128,16 +128,17 @@ html {
 }
 
 .page-quantity-wrapper {
-	width: 30%;
+	max-width: 160px;
+	position: relative;
+	display: flex;
 }
 
 .page-quantity {
 	padding: 0.25rem;
 	border: 0;
 	width: 100%;
+	text-align: center;
 	-moz-appearance: textfield;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
 }
 
 .page-minus:hover::before,
@@ -146,6 +147,12 @@ html {
 }
 
 /* Стили для кнопки переключения страниц */
+.page-information {
+	margin-bottom: 20px;
+	color: white;
+	font-size: 16px;
+	text-align: center;
+}
 
 /* _____ INPUTS _____ */
 
