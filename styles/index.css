@@ -88,8 +88,6 @@ html {
 }
 
 /* Стили для кнопки переключения страниц */
-
-
 .page-control {
 	display: flex;
 	align-items: center;
@@ -137,6 +135,7 @@ html {
 	padding: 0.25rem;
 	border: 0;
 	width: 100%;
+	font-size: 21px;
 	text-align: center;
 	-moz-appearance: textfield;
 }
@@ -267,10 +266,6 @@ html {
 	font-size: 24px;
 	text-align: center;
 }
-
-.item-release-date {}
-
-.item-type {}
 
 /* Элемент фильма */
 
