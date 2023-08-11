@@ -20,8 +20,8 @@ const pageInformationNode = document.querySelector('#pageInformation');
 // _____ FUNCTIONS _____
 const init = () => {
 	if(movieTitleFromStorage) {
-		movieInputFieldNode.value = movieTitleFromStorage;
-		pageQuantityNode.value = pageNumberFromStorage;
+		movieInputFieldNode.value = localStorage.getItem('movieTitleStorage');
+		pageQuantityNode.value = localStorage.getItem('pageNumberStorage');
 		searchMovieByTitle();
 		return;
 	};
@@ -141,7 +141,6 @@ init();
 movieSearchButtonNode.addEventListener('click', searchMovieByTitle);
 movieSearchButtonNode.addEventListener('mouseup', resetCounter);
 movieListOutputNode.addEventListener('click', (e) => showMovieInformation(e));
-
 pageQuantityNode.addEventListener('input', changeMoviePage)
 pageMinusNode.addEventListener('click', minusQuantityInput);
 pagePlusNode.addEventListener('click', plusQuantityInput);
