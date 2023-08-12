@@ -1,18 +1,21 @@
 // _____ КОНСТАНТЫ
 const API_KEY = 'd0fbae7e';
-
 // _____ ССЫЛКИ
 // Ссылка на элемент поля ввода фильмов
 const movieInputFieldNode = document.querySelector('#movieInputField');
 // Ссылка на кнопку поиска фильмов. "Search"
 const movieSearchButtonNode = document.querySelector('#movieSearchButton');
-// Ссылка на объект, в окторый выводится список фильмов 
+// Ссылки на кнопки "next" и "previous"
+const previousButtonNode = document.querySelector('#previousButton');
+const nextButtonNode = document.querySelector('#nextButton');
+// Ссылка на объект, в который выводится список фильмов 
 const pageQuantityNode = document.querySelector('#pageQuantity');
 const pageMinusNode = document.querySelector('#pageMinus');
 const pagePlusNode = document.querySelector('#pagePlus');
 const pageNumberFromStorage = localStorage.getItem('pageNumberStorage', '1');
-
+// Ссылка на элемент вывода списка фильмов
 const movieListOutputNode = document.querySelector('#movieListOutput');
+// Ссылка на заголовок в Local Storage, по которому искали фильмы
 const movieTitleFromStorage = localStorage.getItem('movieTitleStorage');
 
 const errorOutputNode = document.querySelector('#errorOutput');
@@ -49,6 +52,7 @@ const plusQuantityInput = () => {
 	}
 	pageQuantityNode.value = parseInt(pageQuantityNode.value) + 1; 
 	changeMoviePage();
+	window.scrollTo(0, 0)
 }
 
 const minusQuantityInput = () => {
@@ -58,6 +62,7 @@ const minusQuantityInput = () => {
 	if (pageQuantityNode.value > 0) {
 	 pageQuantityNode.value = parseInt(pageQuantityNode.value) - 1;
 	 changeMoviePage(); 
+	 window.scrollTo(0, 0)
 	}	
 }
 
@@ -79,8 +84,6 @@ const getTitleFromUser = () => {
 const getPageNumberFromUser = () => pageQuantityNode.value;
 
 const renderSearchResult = (searchResult) => {
-	// console.log(searchResult);
-	// console.log(pageInformationNode);
 	pageNumber = pageCounter(searchResult.totalResults);
 	pageInformationNode.innerText = `Found ${searchResult.totalResults} movies. ${pageNumber} pages available`
 	let searchResultMarkup = '';
@@ -135,12 +138,15 @@ const showMovieInformation = (element) => {
 		changeLocation(movieID);
 	}
 }
-// _____ ОТРАБОТЧИКИ КНОПОК _____
-init();
 
+init();
+// _____ ОТРАБОТЧИКИ КНОПОК _____
 movieSearchButtonNode.addEventListener('click', searchMovieByTitle);
 movieSearchButtonNode.addEventListener('mouseup', resetCounter);
 movieListOutputNode.addEventListener('click', (e) => showMovieInformation(e));
 pageQuantityNode.addEventListener('input', changeMoviePage)
 pageMinusNode.addEventListener('click', minusQuantityInput);
 pagePlusNode.addEventListener('click', plusQuantityInput);
+previousButtonNode.addEventListener('click', minusQuantityInput)
+nextButtonNode.addEventListener('click', plusQuantityInput)
+
