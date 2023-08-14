@@ -292,15 +292,34 @@ html {
 	transition: 0.2s background;
 	font-size: 18px;
 	min-width: 150px;
-  }
-  
- .control-button:hover {
+}
+
+.control-button:hover {
 	background-color: var(--hover-color);
-  }
-  
+}
+
 
 /* Стили для кнопок переключения страниц */
+::-webkit-scrollbar {
+	width: 0;
+}
 
+.footer {
+	color: white;
+	color: rgba(255, 255, 255, 0.4);
+	margin: 0 auto;
+	padding: 40px 5px;
+	display: flex;
+	justify-content: center;
+	gap: 50px;
+	align-items: center;
+
+}
+
+.developer-contact {
+	color: rgba(255, 255, 255, 0.4);
+	text-decoration: none;
+}
 
 @media (max-width: 450px) {
 	.container {
@@ -354,6 +373,7 @@ html {
 		font-weight: 400;
 	}
 }
+
 @media (min-width: 1200px) {
 	.control-button {
 		--primary-color: #645bff;
@@ -369,5 +389,5 @@ html {
 		transition: 0.2s background;
 		font-size: 24px;
 		min-width: 300px;
-	  }
+	}
 }

@@ -43,8 +43,6 @@ const getMovieID = () => {
 	for (const [key, value] of searchParams.entries()) {
 		movieID[key] = value;
 	}
-	// console.log(movieID);
-	movieIDGlobal = movieID.id;
 	return movieID;
 };
 
@@ -78,7 +76,7 @@ const showMovieInformation = (movieID) => {
 
 // Функция отображения информации на странице
 const renderMovieInformation = () => {
-	movieID = getMovieID();
+	const movieID = getMovieID();
 	showMovieInformation(movieID.id);
 }
 

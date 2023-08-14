@@ -20,6 +20,7 @@ const movieTitleFromStorage = localStorage.getItem('movieTitleStorage');
 
 const errorOutputNode = document.querySelector('#errorOutput');
 const pageInformationNode = document.querySelector('#pageInformation');
+
 // _____ FUNCTIONS _____
 const init = () => {
 	if(movieTitleFromStorage) {
